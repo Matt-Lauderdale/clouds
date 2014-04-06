@@ -1,0 +1,153 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Clouds</title>
+  <meta name="description" content="Animating Clouds">
+  <meta name="author" content="Matt Lauderdale">
+
+  
+  <!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+  	.clouds {
+	    display: block;
+	    position: relative;
+	    width: 100%;
+	    height: 500px;
+	}
+	.cloud-container {
+		display: block;
+		position: absolute;
+		width: 100px;
+		height: 100px;
+	}
+	.clouds img {
+	    position: absolute;
+	    width: 50px;
+	    height: auto;
+	    transition: all 300ms linear;
+	    -ms-transition: all 300ms linear;
+	    -moz-transition: all 300ms linear;
+	    -webkit-transition: all 300ms linear;
+	}
+	.clouds img:hover {
+		-webkit-transform: scale(1.1);
+		-moz-transform: scale(1.1);
+		-ms-transform: scale(1.1);
+		-o-transform: scale(1.1);
+		transform: scale(1.1);
+	}
+	.cc1 {
+		top: 20%;
+		left: 30%;
+	}
+	.cc2 {
+		top: 35%;
+		left: 40%;
+	}
+	.cc3 {
+		top: 10%;
+		left: 15%;
+	}
+	.cc4 {
+		top: 60%;
+		left: 30%;
+	}
+	.clouds img {
+	    position: absolute;
+	    width: 50px;
+	    height: auto;
+	}
+	.cloud1 {
+	    top: 10%;
+	    left: 10%;
+	}
+	.cloud2 {
+	    top: 15%;
+	    left: 15%;
+	}
+	.cloud3 {
+	    top: 20%;
+	    left: 12%;
+	}
+	.cloud4 {
+	    top: 17%;
+	    left: 25%;
+	}
+  </style>
+</head>
+
+<body>
+	<div class="clouds">
+		<div class="cloud-container cc1">
+			<img class="cloud1" src="http://clipartist.net/social/clipartist.net/2012/D12/cloud-999px.png" />
+		</div>
+		<div class="cloud-container cc2">
+			<img class="cloud2" src="http://clipartist.net/social/clipartist.net/2012/D12/cloud-999px.png" />
+		</div>
+		<div class="cloud-container cc3">
+			<img class="cloud3" src="http://clipartist.net/social/clipartist.net/2012/D12/cloud-999px.png" />
+		</div>
+		<div class="cloud-container cc4">
+			<img class="cloud4" src="http://clipartist.net/social/clipartist.net/2012/D12/cloud-999px.png" />
+		</div>
+	</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>  
+<script src="easing.js"></script>  
+<script type="text/javascript">
+function makeNewPosition() {
+    // Get viewport dimensions (remove the dimension of the div)
+    var w = 30; //- 250;
+    var h = 30; //- 250;
+    var nh = Math.floor(Math.random() * h);
+    var nw = Math.floor(Math.random() * w);
+    return [nh, nw];
+}
+
+function animateDiv() {
+
+    var newq = makeNewPosition();
+    var oldq = $('.cloud1').offset();
+    $('.cloud1').animate({
+        top: newq[0],
+        left: newq[1]
+    }, 7500, 'easeInOutQuad', function () {
+        animateDiv();
+    });
+
+    var newq = makeNewPosition();
+    var oldq = $('.cloud2').offset();
+    $('.cloud2').animate({
+        top: newq[0],
+        left: newq[1]
+    }, 7000, 'easeInOutQuad', function () {
+        animateDiv();
+    });
+
+    var newq = makeNewPosition();
+    var oldq = $('.cloud3').offset();
+    $('.cloud3').animate({
+        top: newq[0],
+        left: newq[1]
+    }, 6750, 'easeInOutQuad', function () {
+        animateDiv();
+    });
+
+    var newq = makeNewPosition();
+    var oldq = $('.cloud4').offset();
+    $('.cloud4').animate({
+        top: newq[0],
+        left: newq[1]
+    }, 6550, 'easeInOutQuad', function () {
+        animateDiv();
+    });
+
+}
+animateDiv()
+</script>
+</body>
+</html>
